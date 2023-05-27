@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D729F8662A22412600B14C9A /* CourseCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729F8652A22412600B14C9A /* CourseCellModel.swift */; };
+		D729F8682A22416600B14C9A /* CourseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729F8672A22416600B14C9A /* CourseCellViewModel.swift */; };
+		D729F86A2A22521400B14C9A /* SongwithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D729F8692A22521400B14C9A /* SongwithImage.swift */; };
 		D7AD2D1C2A20CCCC0019A257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD2D1B2A20CCCC0019A257 /* AppDelegate.swift */; };
 		D7AD2D252A20CCD10019A257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2D242A20CCD10019A257 /* Assets.xcassets */; };
 		D7AD2D282A20CCD10019A257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2D262A20CCD10019A257 /* LaunchScreen.storyboard */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D729F8652A22412600B14C9A /* CourseCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellModel.swift; sourceTree = "<group>"; };
+		D729F8672A22416600B14C9A /* CourseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellViewModel.swift; sourceTree = "<group>"; };
+		D729F8692A22521400B14C9A /* SongwithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongwithImage.swift; sourceTree = "<group>"; };
 		D7AD2D182A20CCCC0019A257 /* iTunesMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AD2D1B2A20CCCC0019A257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7AD2D242A20CCD10019A257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 			children = (
 				D7AD2D312A20CEC00019A257 /* SongCell.swift */,
 				D7AD2D322A20CEC00019A257 /* SongCell.xib */,
+				D729F8672A22416600B14C9A /* CourseCellViewModel.swift */,
 			);
 			path = songCell;
 			sourceTree = "<group>";
@@ -136,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				D7AD2D4E2A20D0D30019A257 /* MusicModel.swift */,
+				D729F8652A22412600B14C9A /* CourseCellModel.swift */,
+				D729F8692A22521400B14C9A /* SongwithImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,7 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D729F8662A22412600B14C9A /* CourseCellModel.swift in Sources */,
+				D729F8682A22416600B14C9A /* CourseCellViewModel.swift in Sources */,
 				D7AD2D4A2A20D0A10019A257 /* NetworkRequest.swift in Sources */,
+				D729F86A2A22521400B14C9A /* SongwithImage.swift in Sources */,
 				D7AD2D382A20CF9D0019A257 /* PageWithAllSongsPresentor.swift in Sources */,
 				D7AD2D3A2A20CFB10019A257 /* PageWithAllSongsInteractor.swift in Sources */,
 				D7AD2D452A20D0350019A257 /* InfoMusicInteractor.swift in Sources */,

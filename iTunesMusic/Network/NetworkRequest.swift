@@ -10,6 +10,8 @@ import Foundation
 class NetworkRequest{
     static let shared = NetworkRequest()
 
+    private init() {}
+    
     func requestData(songName : String, complition: @escaping(Data?, Error?) -> Void){
         guard var urlCompanents = URLComponents(string: "https://itunes.apple.com/search") else {return}
         urlCompanents.queryItems = [

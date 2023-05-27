@@ -12,6 +12,7 @@ import UIKit
 class NetworkDataFetch{
     static let shared = NetworkDataFetch()
     
+    private init() {}
     
     func fetchMusics(songName : String, responce : @escaping(MusicModel?, Error?) -> Void){
         

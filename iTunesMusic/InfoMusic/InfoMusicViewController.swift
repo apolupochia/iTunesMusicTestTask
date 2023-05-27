@@ -8,7 +8,8 @@
 import UIKit
 
 protocol InfoSongViewControllerInputProtocol : AnyObject{
-    func fetchImage(image : UIImage, nameOfSong: String, nameOfAuthor : String)
+    func fetchInfoWithImageImage(song : SongwithImage)
+    func fetchInfoWithoutImageImage(song : SongwithImage)
     func changeImagestartSongButton(playNow : Bool)
 }
 
@@ -21,6 +22,9 @@ protocol InfoSongViewControllerOutputProtocol : AnyObject{
 class InfoSongViewController: UIViewController {
     
     var presenter : InfoSongViewControllerOutputProtocol!
+    
+    
+    var indicator = UIActivityIndicatorView()
     
     lazy var image : UIImageView = {
         var imageView = UIImageView()
@@ -70,7 +74,20 @@ class InfoSongViewController: UIViewController {
 
         presenter.loadInfoAboutView()
         setupViews()
+        setupIndicator()
         setupConstraints()
+        
+        
+    }
+    
+    func setupIndicator(){
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = UIActivityIndicatorView.Style.medium
+        indicator.color = .gray
+        self.view.addSubview(indicator)
+    
+        indicator.isHidden = false
+        indicator.startAnimating()
     }
     
     private func setupViews(){
@@ -89,6 +106,8 @@ class InfoSongViewController: UIViewController {
 
 
 extension InfoSongViewController : InfoSongViewControllerInputProtocol{
+
+    
     func changeImagestartSongButton(playNow : Bool) {
         if playNow {
             startSongButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
@@ -97,10 +116,20 @@ extension InfoSongViewController : InfoSongViewControllerInputProtocol{
         }
     }
     
-    func fetchImage(image : UIImage, nameOfSong: String, nameOfAuthor : String) {
-        self.image.image = image
-        self.nameOfTheSongLabel.text = nameOfSong
-        self.nameOfTheAuthorLabel.text = nameOfAuthor
+    func fetchInfoWithImageImage(song : SongwithImage) {
+        
+        indicator.isHidden = true
+        indicator.stopAnimating()
+        
+        self.image.image = song.image
+        self.nameOfTheSongLabel.text = song.songName
+        self.nameOfTheAuthorLabel.text = song.songAuthor
+    }
+ 
+    
+    func fetchInfoWithoutImageImage(song: SongwithImage) {
+        self.nameOfTheSongLabel.text = song.songName
+        self.nameOfTheAuthorLabel.text = song.songAuthor
     }
     
     
@@ -140,6 +169,13 @@ extension InfoSongViewController{
             startSongButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width * (35 / 100)),
             startSongButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * (10 / 100)),
             startSongButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * (30 / 100))
+        ])
+        
+        
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indicator.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height * (33 / 100)),
+            indicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UIScreen.main.bounds.width * (49 / 100))
         ])
         
 

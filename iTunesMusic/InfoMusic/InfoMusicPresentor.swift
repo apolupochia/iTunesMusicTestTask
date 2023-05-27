@@ -10,8 +10,6 @@ import UIKit
 
 class InfoSongPresentor : InfoSongViewControllerOutputProtocol{
 
-    
-    
     unowned var viewController : InfoSongViewControllerInputProtocol
     var interactor : InfoSongInteractorInputPresentor!
     
@@ -37,8 +35,13 @@ class InfoSongPresentor : InfoSongViewControllerOutputProtocol{
 extension InfoSongPresentor :  InfoSongInteractorOutputPresentor{
 
     
-    func loadImg(image: UIImage, nameOfSong: String, nameOfAuthor: String){
-        viewController.fetchImage(image: image, nameOfSong: nameOfSong, nameOfAuthor: nameOfAuthor)
+    func loadImg(image: UIImage, downloadingImage : Bool, nameOfSong: String, nameOfAuthor: String){
+        let song = SongwithImage(songName: nameOfSong, downloadingImage: false, image: image, songAuthor: nameOfAuthor)
+        if !downloadingImage{
+            viewController.fetchInfoWithImageImage(song: song)
+        } else {
+            viewController.fetchInfoWithoutImageImage(song: song)
+        }
         
     }
 }

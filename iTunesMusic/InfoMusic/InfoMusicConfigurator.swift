@@ -10,11 +10,11 @@ import UIKit
 
 
 protocol InfoSongConfiguratorInputProtocol{
-    func configure(with viewController: InfoSongViewController, info : Result)
+    func configure(with viewController: InfoSongViewController, info : SongwithoutImage)
 }
 
 class InfoSongConfigurator : InfoSongConfiguratorInputProtocol{
-    func configure(with viewController: InfoSongViewController, info : Result) {
+    func configure(with viewController: InfoSongViewController, info : SongwithoutImage) {
         let presenter = InfoSongPresentor(viewController: viewController)
         let interactor = InfoSongInteractor(presentor: presenter,info: info)
         

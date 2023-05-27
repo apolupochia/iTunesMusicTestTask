@@ -9,33 +9,34 @@ import Foundation
 import UIKit
 
 protocol InfoSongInteractorInputPresentor{
-    init(presentor :  InfoSongInteractorOutputPresentor, info : Result)
+    init(presentor :  InfoSongInteractorOutputPresentor, info : SongwithoutImage)
     func getInfoAboutView()
 }
 
 protocol InfoSongInteractorOutputPresentor : AnyObject{
-    func loadImg(image : UIImage, nameOfSong: String, nameOfAuthor : String)
+    func loadImg(image: UIImage, downloadingImage : Bool, nameOfSong: String, nameOfAuthor: String)
 }
 
 class InfoSongInteractor : InfoSongInteractorInputPresentor{
     
     unowned var presenter : InfoSongInteractorOutputPresentor
-    var info : Result
+    var info : SongwithoutImage
     
-    required init(presentor: InfoSongInteractorOutputPresentor, info : Result) {
+    required init(presentor: InfoSongInteractorOutputPresentor, info : SongwithoutImage) {
         self.info = info
         self.presenter = presentor
     }
     
     func getInfoAboutView() {
-        if let urlImg = info.artworkUrl100{
-            NetworkDataFetch.shared.fetchImg(urlImage: urlImg) { image in
-                guard let img = image else { return }
-                DispatchQueue.main.async {
-                    self.presenter.loadImg(image: img, nameOfSong: self.info.trackName, nameOfAuthor: self.info.artistName)
+        self.presenter.loadImg(image : downloadProblem!, downloadingImage: true , nameOfSong: self.info.songName, nameOfAuthor: self.info.songAuthor)
+            NetworkDataFetch.shared.fetchImg(urlImage: info.urlImageString) { image in
+                guard let img = image else {
+                    self.presenter.loadImg(image : downloadProblem!, downloadingImage: false , nameOfSong: self.info.songName, nameOfAuthor: self.info.songAuthor)
+                    return
                 }
-            }
-        }
+                self.presenter.loadImg(image: img, downloadingImage: false, nameOfSong: self.info.songName, nameOfAuthor: self.info.songAuthor)
+                }
+        
     }
     
     

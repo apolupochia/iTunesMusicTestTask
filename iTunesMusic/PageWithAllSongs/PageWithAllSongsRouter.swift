@@ -9,10 +9,12 @@ import Foundation
 
 protocol PageWithAllSongsInputProtocol {
     init(viewController: PageWithAllSongsViewController)
-    func openInfoMusicViewController(song: Result)
+    func openInfoMusicViewController(song: SongwithoutImage)
 }
 
 class PageWithAllSongsRouter : PageWithAllSongsInputProtocol{
+
+    
 
     unowned var viewController : PageWithAllSongsViewController
     
@@ -20,7 +22,7 @@ class PageWithAllSongsRouter : PageWithAllSongsInputProtocol{
         self.viewController = viewController
     }
     
-    func openInfoMusicViewController(song: Result) {
+    func openInfoMusicViewController(song: SongwithoutImage) {
         let infoInRepositoryViewController =  InfoSongViewController()
         infoInRepositoryViewController.modalPresentationStyle = .fullScreen
         let configurator: InfoSongConfiguratorInputProtocol = InfoSongConfigurator()
